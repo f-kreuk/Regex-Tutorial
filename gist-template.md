@@ -4,6 +4,7 @@ This tutorial will walk you through a basic URL validation using the below regul
 
 /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
 
+
 ## Summary
 
 This regular expression is designed to validate URLs with:
@@ -36,6 +37,7 @@ This regular expression is designed to validate URLs with:
 
 The emboldened caret (^) and dollar ($) symbols above represent anchors within our regular expression. The caret matches the beginning of the text, and the dollar matches the end. Both anchors together (^...$) are utilized to test whether a string matches a specific regex pattern.
 
+
 ### Quantifiers
 
 Quantifiers are utilized to quantify the number of times an element of the regular expression should be repeated. Quantifiers are written after elements of the regular expression to specify how many times it should be repeated. Common quantifiers include the question mark (?), asterisk (*), plus sign (+), and a range quantifier, i.e. {N,M}.
@@ -49,9 +51,11 @@ Our URL validation regular expression above demonstrates a number of common quan
 3. ([a-z\.]<strong>{2,6}</strong>): The {2,6} range quantifier means the preceding element is repeated 2 to 6 times. This element matches the top-level domain. The element in brackets specifies that the content must consist of lower case letters and dots. The range quantifier then specifies that the top-level domain must consist of between 2 and 6 characters. This is consistent with common top-level domains like ".com" or ".org".
 4. ([\/\w \.-]<strong>*</strong>)<strong>*</strong>\/?: The aterisk allows for zero or more occurrences of the preceding pattern, which means the path is optional. This element matches 0 or more characters that can consist of a forward slash, letters, digits, underscores, spaces, dots, or hyphens. The asterisk quantifier allows for zero or more occurrences of the preceding pattern.
 
+
 ### OR Operator
 
 In regular expressions, OR operators are denotated using the vertical line (|) symbol. The URL validation regular expression above does not readily utilize any OR operators; however, they can be better understand when looking at the domain name element of the URL. For example, in ([\da-z\.-]+), the "a-z" represents [abcdefghijklmnopqrstuvwxyz] or alternatively [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z]. 
+
 
 ### Character Classes
 
@@ -65,7 +69,18 @@ Our URL validation regular expression above demonstrates a number of character c
 2. (<strong>[a-z\.]</strong>{2,6}): In this example, "a-z" matches any lowercase characters from a to z and "\." is a literal period character.
 3. (<strong>[\/\w \.-]</strong>*)*\/?: In this example, "\/" is a literal forward slash character; "\w" represents a word character, which includes upper and lowercase letters, digits, and underscores; " " is a literal space character; "\." is a literal period character; and "-" is a literal hyphen character.
 
+
 ### Flags
+
+A regular expression flag is an optional parameter that modifies its behavior of searching. In JavaScript regular expressions, there are six flags:
+
+1. Ignore Casing (i): Makes an expression look for its matches while ignoring chracter casing.
+2. Global (g): Makes an expression look for all its matches, rather than stopping at the first one.
+3. Dot All (s): Makes the dot (.) character meatch everything, even newlines.
+4. Multiline (m): Makes the caret (^) and money ($) anchor tokens match the beginning and end of each line.
+5. Sticky (y): Makes an expression search from the position specified in its lastIndex property.
+6. Unicode (u): Makes an expression treat characters in a given test string as code points, rather than code units.
+
 
 ### Grouping and Capturing
 

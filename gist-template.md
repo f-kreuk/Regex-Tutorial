@@ -84,9 +84,28 @@ A regular expression flag is an optional parameter that modifies its behavior of
 
 ### Grouping and Capturing
 
+Grouping is a useful feature of regular expressions that is capable of simplifying complex patterns. Any subpattern enclosed within parentheses () is a group. We have already been looking at various groups within our URL validation regular expression, namely:
+
+* (https?:\/\/)
+* ([\da-z\.-]+)
+* ([a-z\.]{2,6})
+* ([\/\w \.-]*)
+
+
 ### Bracket Expressions
 
+A bracket expression is an expression enclosed in square brackets used to create flexible and specific patterns for matching characters in regular expressions. A bracket expression allows you to define a set of characters to match at a specific position in a string. We have already been looking at various bracket expressions within our URL validation regular expression, namely:
+
+* [\da-z\.-]
+* [a-z\.]
+* [\/\w \.-]
+
+
 ### Greedy and Lazy Match
+
+By default, a quantifier is <strong>greedy</strong> and tells the engine to match its subpattern or quntified token with as many instances as possible. For example, with the plus sign (+) quantifier in our example: ([\da-z\.-]+), we are matching one or more characters within the domain name of the URL, which consists of digits, lowercase letters, periods, or hyphens. If a greedy quantifier in this context is matching the domain of "google" starting from the left position, g, go, goo, goog, googl, or google would constitute a match. Notwithstanding, because the default quantifier is greedy, as many digits are matched as possible, and the longest match is returned, i.e. "google". 
+
+A <strong>lazy</strong> quantifier, on the other hand, tells the engine to match as few quantified tokens as possible. A regular expression is made lazy by appending a question mark (?) to it. If we were to add a question mark following the plus sign quantifier in our previous example, i.e. ([\da-z\.-]+<strong>?</strong>), then matching the domain of "google" starting from the left position would simply return "g", as the smallest match returned.
 
 ### Boundaries
 

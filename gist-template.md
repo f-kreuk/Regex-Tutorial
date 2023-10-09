@@ -33,41 +33,41 @@ This regular expression is designed to validate URLs with:
 
 ### Anchors
 
-/<strong>^</strong>```(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?```<strong>$</strong>/
+```/```<strong>```^```</strong>```(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?```<strong>```$```</strong>```/```
 
-```The emboldened caret (^) and dollar ($) symbols above represent anchors within our regular expression. The caret matches the beginning of the text, and the dollar matches the end. Both anchors together (^...$) are utilized to test whether a string matches a specific regex pattern.```
+The emboldened caret (^) and dollar ($) symbols above represent anchors within our regular expression. The caret matches the beginning of the text, and the dollar matches the end. Both anchors together (^...$) are utilized to test whether a string matches a specific regex pattern.
 
 
 ### Quantifiers
 
 Quantifiers are utilized to quantify the number of times an element of the regular expression should be repeated. Quantifiers are written after elements of the regular expression to specify how many times it should be repeated. Common quantifiers include the question mark (?), asterisk (*), plus sign (+), and a range quantifier, i.e. {N,M}.
 
-/^(https<strong>?</strong>:\/\/)<strong>?</strong>([\da-z\.-]<strong>+</strong>)\.([a-z\.]<strong>{2,6}</strong>)([\/\w \.-]<strong>```*```</strong>)<strong>```*```</strong>\/?$/
+```/^(https```<strong>```?```</strong>```:\/\/)```<strong>```?```</strong>```([\da-z\.-]```<strong>```+```</strong>```)\.([a-z\.]```<strong>```{2,6}```</strong>```)([\/\w \.-]```<strong>```*```</strong>```)```<strong>```*```</strong>```\/?$/```
 
 Our URL validation regular expression above demonstrates a number of common quantifiers:
 
-1. (https<strong>?</strong>:\/\/)<strong>?</strong>: The question mark makes the element optional. This element matches the protocol part of the URL, which is either https:// or http://. The question mark after the s makes the "s" optional. The question mark after the entire group makes the entire group optional, thereby allowing URLs without a designated protocol.
-2. ([\da-z\.-]<strong>+</strong>): The plus sign means that this element is one or more characters. This element matches the domain name of the URL, which consists of digits, lowercase letters, periods, or hyphens.
-3. ([a-z\.]<strong>{2,6}</strong>): The {2,6} range quantifier means the preceding element is repeated 2 to 6 times. This element matches the top-level domain. The element in brackets specifies that the content must consist of lower case letters and dots. The range quantifier then specifies that the top-level domain must consist of between 2 and 6 characters. This is consistent with common top-level domains like ".com" or ".org".
-4. ([\/\w \.-]<strong>*</strong>)<strong>*</strong>\/?: The aterisk allows for zero or more occurrences of the preceding pattern, which means the path is optional. This element matches 0 or more characters that can consist of a forward slash, letters, digits, underscores, spaces, dots, or hyphens. The asterisk quantifier allows for zero or more occurrences of the preceding pattern.
+1. ```(https```<strong>```?```</strong>```:\/\/)```<strong>```?```</strong>: The question mark makes the element optional. This element matches the protocol part of the URL, which is either https:// or http://. The question mark after the s makes the "s" optional. The question mark after the entire group makes the entire group optional, thereby allowing URLs without a designated protocol.
+2. ```([\da-z\.-]```<strong>```+```</strong>```)```: The plus sign means that this element is one or more characters. This element matches the domain name of the URL, which consists of digits, lowercase letters, periods, or hyphens.
+3. ```([a-z\.]```<strong>```{2,6}```</strong>```)```: The {2,6} range quantifier means the preceding element is repeated 2 to 6 times. This element matches the top-level domain. The element in brackets specifies that the content must consist of lower case letters and dots. The range quantifier then specifies that the top-level domain must consist of between 2 and 6 characters. This is consistent with common top-level domains like ".com" or ".org".
+4. ```([\/\w \.-]```<strong>```*```</strong>```)```<strong>```*```</strong>```\/?```: The aterisk allows for zero or more occurrences of the preceding pattern, which means the path is optional. This element matches 0 or more characters that can consist of a forward slash, letters, digits, underscores, spaces, dots, or hyphens. The asterisk quantifier allows for zero or more occurrences of the preceding pattern.
 
 
 ### OR Operator
 
-In regular expressions, OR operators are denotated using the vertical line (|) symbol. The URL validation regular expression above does not readily utilize any OR operators; however, they can be better understand when looking at the domain name element of the URL. For example, in ([\da-z\.-]+), the "a-z" represents [abcdefghijklmnopqrstuvwxyz] or alternatively [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z]. 
+In regular expressions, OR operators are denotated using the vertical line (|) symbol. The URL validation regular expression above does not readily utilize any OR operators; however, they can be better understand when looking at the domain name element of the URL. For example, in ```([\da-z\.-]+)```, the "a-z" represents [abcdefghijklmnopqrstuvwxyz] or alternatively [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z]. 
 
 
 ### Character Classes
 
 Character classes are often orgnized with opening and closing square brackets and define a set of characters, any one of which can occur in an input for the match to succeed.
 
-/^(https?:\/\/)?(<strong>[\da-z\.-]</strong>+)\.(<strong>[a-z\.]</strong>{2,6})(<strong>[\/\w \.-]</strong>```*)*\/?$/```
+```/^(https?:\/\/)?(```<strong>```[\da-z\.-]```</strong>```+)\.(```<strong>```[a-z\.]```</strong>```{2,6})(```<strong>```[\/\w \.-]```</strong>```*)*\/?$/```
 
 Our URL validation regular expression above demonstrates a number of character classes:
 
-1. (<strong>[\da-z\.-]</strong>+): In this example, "\d" is a digit character, which includes the standard digits of 0 to 9; "a-z" matches any lowercase characters from a to z; "\." is a literal period character with a backslash used to escape it; and "-" is a literal hyphen character. Note: in regular expressions, certain characters have special meanings, and if you want to match them literally, then you need to escape them with a backslash. By default, the "." is used as a wildcard, and in order to use it literally, you must escape it.
-2. (<strong>[a-z\.]</strong>{2,6}): In this example, "a-z" matches any lowercase characters from a to z and "\." is a literal period character.
-3. (<strong>[\/\w \.-]</strong>*)*\/?: In this example, "\/" is a literal forward slash character; "\w" represents a word character, which includes upper and lowercase letters, digits, and underscores; " " is a literal space character; "\." is a literal period character; and "-" is a literal hyphen character.
+1. ```(```<strong>```[\da-z\.-]```</strong>```+)```: In this example, "\d" is a digit character, which includes the standard digits of 0 to 9; "a-z" matches any lowercase characters from a to z; "\." is a literal period character with a backslash used to escape it; and "-" is a literal hyphen character. Note: in regular expressions, certain characters have special meanings, and if you want to match them literally, then you need to escape them with a backslash. By default, the "." is used as a wildcard, and in order to use it literally, you must escape it.
+2. ```(```<strong>```[a-z\.]```</strong>```{2,6})```: In this example, "a-z" matches any lowercase characters from a to z and "\." is a literal period character.
+3. ```(```<strong>```[\/\w \.-]```</strong>```*)*\/?```: In this example, "\/" is a literal forward slash character; "\w" represents a word character, which includes upper and lowercase letters, digits, and underscores; " " is a literal space character; "\." is a literal period character; and "-" is a literal hyphen character.
 
 
 ### Flags
@@ -86,26 +86,26 @@ A regular expression flag is an optional parameter that modifies its behavior of
 
 Grouping is a useful feature of regular expressions that is capable of simplifying complex patterns. Any subpattern enclosed within parentheses () is a group. We have already been looking at various groups within our URL validation regular expression, namely:
 
-* (https?:\/\/)
-* ([\da-z\.-]+)
-* ([a-z\.]{2,6})
-* ([\/\w \.-]*)
+* ```(https?:\/\/)```
+* ```([\da-z\.-]+)```
+* ```([a-z\.]{2,6})```
+* ```([\/\w \.-]*)```
 
 
 ### Bracket Expressions
 
 A bracket expression is an expression enclosed in square brackets used to create flexible and specific patterns for matching characters in regular expressions. A bracket expression allows you to define a set of characters to match at a specific position in a string. We have already been looking at various bracket expressions within our URL validation regular expression, namely:
 
-* [\da-z\.-]
-* [a-z\.]
-* [\/\w \.-]
+* ```[\da-z\.-]```
+* ```[a-z\.]```
+* ```[\/\w \.-]```
 
 
 ### Greedy and Lazy Match
 
-By default, a quantifier is <strong>greedy</strong> and tells the engine to match its subpattern or quntified token with as many instances as possible. For example, with the plus sign (+) quantifier in our example: ([\da-z\.-]+), we are matching one or more characters within the domain name of the URL, which consists of digits, lowercase letters, periods, or hyphens. If a greedy quantifier in this context is matching the domain of "google" starting from the left position, g, go, goo, goog, googl, or google would constitute a match. Notwithstanding, because the default quantifier is greedy, as many digits are matched as possible, and the longest match is returned, i.e. "google". 
+By default, a quantifier is <strong>greedy</strong> and tells the engine to match its subpattern or quntified token with as many instances as possible. For example, with the plus sign (+) quantifier in our example: ```([\da-z\.-]+)```, we are matching one or more characters within the domain name of the URL, which consists of digits, lowercase letters, periods, or hyphens. If a greedy quantifier in this context is matching the domain of "google" starting from the left position, g, go, goo, goog, googl, or google would constitute a match. Notwithstanding, because the default quantifier is greedy, as many digits are matched as possible, and the longest match is returned, i.e. "google". 
 
-A <strong>lazy</strong> quantifier, on the other hand, tells the engine to match as few quantified tokens as possible. A regular expression is made lazy by appending a question mark (?) to it. If we were to add a question mark following the plus sign quantifier in our previous example, i.e. ([\da-z\.-]+<strong>?</strong>), then lazily matching the domain of "google" starting from the left position would simply return "g", as the smallest match returned.
+A <strong>lazy</strong> quantifier, on the other hand, tells the engine to match as few quantified tokens as possible. A regular expression is made lazy by appending a question mark (?) to it. If we were to add a question mark following the plus sign quantifier in our previous example, i.e. ```([\da-z\.-]+```<strong>```?```</strong>```)```, then lazily matching the domain of "google" starting from the left position would simply return "g", as the smallest match returned.
 
 ### Boundaries
 
@@ -117,18 +117,18 @@ Back-references can be leveraged to use the contents of capturing groups in the 
 
 In our example, we have four possible back-references, including:
 
-1. \1: (https?:\/\/)
-2. \2: ([\da-z\.-]+)
-3. \3: ([a-z\.]{2,6})
-4. \4: ([\/\w \.-]*)
+1. \1: ```(https?:\/\/)```
+2. \2: ```([\da-z\.-]+)```
+3. \3: ```([a-z\.]{2,6})```
+4. \4: ```([\/\w \.-]*)```
 
 ### Look-ahead and Look-behind
 
 Look-aheads and look-behinds are useful tools/tests within regular expressions that facilitate the finding of matches for patterns followed or preceded by other patterns. 
 
-A positive lookahead assertion, i.e. "goo(?=gle)" will match "goo" only if its immediately followed by "gle", which is not included in the match. As demonstrated in this example, a positive lookahead assertion checks if a pattern follows the current position without including that pattern in the match. A negative lookahead assertion, i.e. "goo(?!gle)", will match "goo" as long as it is not followed by "gle" (like in goober, goose, etc.).
+A positive lookahead assertion, i.e. "```goo(?=gle)```" will match "goo" only if its immediately followed by "gle", which is not included in the match. As demonstrated in this example, a positive lookahead assertion checks if a pattern follows the current position without including that pattern in the match. A negative lookahead assertion, i.e. "goo(?!gle)", will match "goo" as long as it is not followed by "gle" (like in goober, goose, etc.).
 
-A positive lookbehind assertion, on the other hand, checks if a certain pattern precedes the current position without including that pattern in the match. For example, "(?<=goo)gle" will match "gle" when preceded by "goo". A negative lookbehind assertion, i.e. "(?<!goo)gle" will match "gle" only if not preceded by "goo" (like in eagle, angle, etc.).
+A positive lookbehind assertion, on the other hand, checks if a certain pattern precedes the current position without including that pattern in the match. For example, "(?<=goo)gle" will match "gle" when preceded by "goo". A negative lookbehind assertion, i.e. "```(?<!goo)gle```" will match "gle" only if not preceded by "goo" (like in eagle, angle, etc.).
 
 ## Author
 

@@ -2,7 +2,7 @@
 
 This tutorial will walk you through a basic URL validation using the below regular expression.
 
-/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]('\*))('\*)\/?$/
 
 
 ## Summary
@@ -33,7 +33,7 @@ This regular expression is designed to validate URLs with:
 
 ### Anchors
 
-/<strong><span style="color: #00008B">^</strong></span>(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?<strong>$</strong>/
+/<strong>^</strong>(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?<strong>$</strong>/
 
 The emboldened caret (^) and dollar ($) symbols above represent anchors within our regular expression. The caret matches the beginning of the text, and the dollar matches the end. Both anchors together (^...$) are utilized to test whether a string matches a specific regex pattern.
 

@@ -105,13 +105,26 @@ A bracket expression is an expression enclosed in square brackets used to create
 
 By default, a quantifier is <strong>greedy</strong> and tells the engine to match its subpattern or quntified token with as many instances as possible. For example, with the plus sign (+) quantifier in our example: ([\da-z\.-]+), we are matching one or more characters within the domain name of the URL, which consists of digits, lowercase letters, periods, or hyphens. If a greedy quantifier in this context is matching the domain of "google" starting from the left position, g, go, goo, goog, googl, or google would constitute a match. Notwithstanding, because the default quantifier is greedy, as many digits are matched as possible, and the longest match is returned, i.e. "google". 
 
-A <strong>lazy</strong> quantifier, on the other hand, tells the engine to match as few quantified tokens as possible. A regular expression is made lazy by appending a question mark (?) to it. If we were to add a question mark following the plus sign quantifier in our previous example, i.e. ([\da-z\.-]+<strong>?</strong>), then matching the domain of "google" starting from the left position would simply return "g", as the smallest match returned.
+A <strong>lazy</strong> quantifier, on the other hand, tells the engine to match as few quantified tokens as possible. A regular expression is made lazy by appending a question mark (?) to it. If we were to add a question mark following the plus sign quantifier in our previous example, i.e. ([\da-z\.-]+<strong>?</strong>), then lazily matching the domain of "google" starting from the left position would simply return "g", as the smallest match returned.
 
 ### Boundaries
 
+Boundaries are similar to anchors in that they are assertions about the engine's current position in the string. As seen above, anchors assert that the current position in a string matches a certain position, i.e. the beginning or the end. A boundary, on the other hand, makes assertions about what can be matched to the left or right of the current position.
+
 ### Back-references
 
+Back-references can be leveraged to use the contents of capturing groups in the pattern itself. Namely, it allows you to refer back to a portion of text that you already matched within the regular expression. Back-references are generally in the form of a backslash followed by a number, i.e. "\1" or "\2", where the number corresponds with the of-interest capturing group.
+
+In our example, we have four possible back-references, including:
+
+1. \1: (https?:\/\/)
+2. \2: ([\da-z\.-]+)
+3. \3: ([a-z\.]{2,6})
+4. \4: ([\/\w \.-]*)
+
 ### Look-ahead and Look-behind
+
+
 
 ## Author
 

@@ -124,8 +124,12 @@ In our example, we have four possible back-references, including:
 
 ### Look-ahead and Look-behind
 
+Look-aheads and look-behinds are useful tools/tests within regular expressions that facilitate the finding of matches for patterns followed or preceded by other patterns. 
 
+A positive lookahead assertion, i.e. "goo(?=gle)" will match "goo" only if its immediately followed by "gle", which is not included in the match. As demonstrated in this example, a positive lookahead assertion checks if a pattern follows the current position without including that pattern in the match. A negative lookahead assertion, i.e. "goo(?!gle)", will match "goo" as long as it is not followed by "gle" (like in goober, goose, etc.).
+
+A positive lookbehind assertion, on the other hand, checks if a certain pattern precedes the current position without including that pattern in the match. For example, "(?<=goo)gle" will match "gle" when preceded by "goo". A negative lookbehind assertion, i.e. "(?<!goo)gle" will match "gle" only if not preceded by "goo" (like in eagle, angle, etc.).
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+This tutorial was created as part of the 2023 UCONN Full Stack Coding Bootcamp. For more information about the author of this post, please visit his GitHub portfolio: https://github.com/f-kreuk.

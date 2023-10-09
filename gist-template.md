@@ -2,17 +2,17 @@
 
 This tutorial will walk you through a basic URL validation using the below regular expression.
 
-/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]('\*))('\*)\/?$/
+```/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/```
 
 
 ## Summary
 
 This regular expression is designed to validate URLs with:
-* (https?:\/\/)?    | an optional HTTP/HTTPS protocol;
-* ([\da-z\.-]+)     | a domain name consisting of letters, numbers, dots, and hyphons;
-* \.                | a literal dot character, separating the domain from the top-level domain;
-* ([a-z\.]{2,6})    | a valid top-level domain with a length of 2-6 characters; and
-* ([\/\w \.-]*)*\/? | an optional path and optional trailing slash.
+* ```(https?:\/\/)?```    | an optional HTTP/HTTPS protocol;
+* ```([\da-z\.-]+)```     | a domain name consisting of letters, numbers, dots, and hyphons;
+* ```\.```                | a literal dot character, separating the domain from the top-level domain;
+* ```([a-z\.]{2,6})```    | a valid top-level domain with a length of 2-6 characters; and
+* ```([\/\w \.-]*)*\/?``` | an optional path and optional trailing slash.
 
 
 ## Table of Contents
@@ -33,16 +33,16 @@ This regular expression is designed to validate URLs with:
 
 ### Anchors
 
-/<strong>^</strong>(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?<strong>$</strong>/
+/<strong>^</strong>```(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?```<strong>$</strong>/
 
-The emboldened caret (^) and dollar ($) symbols above represent anchors within our regular expression. The caret matches the beginning of the text, and the dollar matches the end. Both anchors together (^...$) are utilized to test whether a string matches a specific regex pattern.
+```The emboldened caret (^) and dollar ($) symbols above represent anchors within our regular expression. The caret matches the beginning of the text, and the dollar matches the end. Both anchors together (^...$) are utilized to test whether a string matches a specific regex pattern.```
 
 
 ### Quantifiers
 
 Quantifiers are utilized to quantify the number of times an element of the regular expression should be repeated. Quantifiers are written after elements of the regular expression to specify how many times it should be repeated. Common quantifiers include the question mark (?), asterisk (*), plus sign (+), and a range quantifier, i.e. {N,M}.
 
-/^(https<strong>?</strong>:\/\/)<strong>?</strong>([\da-z\.-]<strong>+</strong>)\.([a-z\.]<strong>{2,6}</strong>)([\/\w \.-]<strong>*</strong>)<strong>*</strong>\/?$/
+/^(https<strong>?</strong>:\/\/)<strong>?</strong>([\da-z\.-]<strong>+</strong>)\.([a-z\.]<strong>{2,6}</strong>)([\/\w \.-]<strong>```*```</strong>)<strong>```*```</strong>\/?$/
 
 Our URL validation regular expression above demonstrates a number of common quantifiers:
 
@@ -61,7 +61,7 @@ In regular expressions, OR operators are denotated using the vertical line (|) s
 
 Character classes are often orgnized with opening and closing square brackets and define a set of characters, any one of which can occur in an input for the match to succeed.
 
-/^(https?:\/\/)?(<strong>[\da-z\.-]</strong>+)\.(<strong>[a-z\.]</strong>{2,6})(<strong>[\/\w \.-]</strong>*)*\/?$/
+/^(https?:\/\/)?(<strong>[\da-z\.-]</strong>+)\.(<strong>[a-z\.]</strong>{2,6})(<strong>[\/\w \.-]</strong>```*)*\/?$/```
 
 Our URL validation regular expression above demonstrates a number of character classes:
 

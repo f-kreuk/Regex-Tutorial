@@ -51,7 +51,19 @@ Our URL validation regular expression above demonstrates a number of common quan
 
 ### OR Operator
 
+In regular expressions, OR operators are denotated using the vertical line (|) symbol. The URL validation regular expression above does not readily utilize any OR operators; however, they can be better understand when looking at the domain name element of the URL. For example, in ([\da-z\.-]+), the "a-z" represents [abcdefghijklmnopqrstuvwxyz] or alternatively [a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z]. 
+
 ### Character Classes
+
+Character classes are often orgnized with opening and closing square brackets and define a set of characters, any one of which can occur in an input for the match to succeed.
+
+/^(https?:\/\/)?(<strong>[\da-z\.-]</strong>+)\.(<strong>[a-z\.]</strong>{2,6})(<strong>[\/\w \.-]</strong>*)*\/?$/
+
+Our URL validation regular expression above demonstrates a number of character classes:
+
+1. (<strong>[\da-z\.-]</strong>+): In this example, "\d" is a digit character, which includes the standard digits of 0 to 9; "a-z" matches any lowercase characters from a to z; "\." is a literal period character with a backslash used to escape it; and "-" is a literal hyphen character. Note: in regular expressions, certain characters have special meanings, and if you want to match them literally, then you need to escape them with a backslash. By default, the "." is used as a wildcard, and in order to use it literally, you must escape it.
+2. (<strong>[a-z\.]</strong>{2,6}): In this example, "a-z" matches any lowercase characters from a to z and "\." is a literal period character.
+3. (<strong>[\/\w \.-]</strong>*)*\/?: In this example, "\/" is a literal forward slash character; "\w" represents a word character, which includes upper and lowercase letters, digits, and underscores; " " is a literal space character; "\." is a literal period character; and "-" is a literal hyphen character.
 
 ### Flags
 

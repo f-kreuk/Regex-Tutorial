@@ -46,9 +46,8 @@ Our URL validation regular expression above demonstrates a number of common quan
 
 1. (https<strong>?</strong>:\/\/)<strong>?</strong>: The question mark makes the element optional. This element matches the protocol part of the URL, which is either https:// or http://. The question mark after the s makes the "s" optional. The question mark after the entire group makes the entire group optional, thereby allowing URLs without a designated protocol.
 2. ([\da-z\.-]<strong>+</strong>): The plus sign means that this element is one or more characters. This element matches the domain name of the URL, which consists of digits, lowercase letters, periods, or hyphens.
-3. ([a-z\.]<strong>{2,6}</strong>): 
-
-
+3. ([a-z\.]<strong>{2,6}</strong>): The {2,6} range quantifier means the preceding element is repeated 2 to 6 times. This element matches the top-level domain. The element in brackets specifies that the content must consist of lower case letters and dots. The range quantifier then specifies that the top-level domain must consist of between 2 and 6 characters. This is consistent with common top-level domains like ".com" or ".org".
+4. ([\/\w \.-]<strong>*</strong>)<strong>*</strong>\/?: The aterisk allows for zero or more occurrences of the preceding pattern, which means the path is optional. This element matches 0 or more characters that can consist of a forward slash, letters, digits, underscores, spaces, dots, or hyphens. The asterisk quantifier allows for zero or more occurrences of the preceding pattern.
 
 ### OR Operator
 
